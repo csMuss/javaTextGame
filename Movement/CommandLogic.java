@@ -84,6 +84,8 @@ public class CommandLogic {
 	private CommandLogic handleTp(int currentPos) {
 		Kronk.print("DEBUG: TP POS: ");
 		String tpPos = UserInput.input.scannerInstance();
+		// gets the second input as an integer breaks if a char is sent as it will
+		// place the character outside the bounds
 		int newPos = Character.getNumericValue(tpPos.toCharArray()[0]);
 		return new CommandLogic("DEBUG: TELEPORT TO: " + newPos, newPos);
 	}
