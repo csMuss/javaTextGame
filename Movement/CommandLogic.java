@@ -86,6 +86,7 @@ public class CommandLogic {
 		String tpPos = UserInput.input.scannerInstance();
 		// gets the second input as an integer breaks if a char is sent as it will
 		// place the character outside the bounds
+		// Gets the first charater from the array as a number
 		int newPos = Character.getNumericValue(tpPos.toCharArray()[0]);
 		return new CommandLogic("DEBUG: TELEPORT TO: " + newPos, newPos);
 	}
