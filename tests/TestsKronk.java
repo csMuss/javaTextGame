@@ -25,6 +25,9 @@ public class TestsKronk {
 	private int currentPos = 4;
 	private CommandLogic cmd = new CommandLogic(printTest, currentPos);
 	
+	private String northInput = "north";
+	private int northTest = 1;
+	
 	@Before
 	public void setUp() {
 	    System.setOut(new PrintStream(outContent));
@@ -45,7 +48,18 @@ public class TestsKronk {
 	
 	@Test 
 	public void testDebugTP() {
-		//assertArrayEquals(cmd.getNewPosition(), 4);
+		assertEquals(cmd.getNewPosition(), currentPos);
+	}
+	
+	@Test 
+	public void testDebugTPFail() {
+		assertNotEquals(cmd.getNewPosition(), currentPos + 1);
+	}
+	
+	@Test 
+	public void testCMDLogic() {
+		CommandLogic testNorth = cmd.checkCMD(northInput, northTest + 1);
+		assertEquals(testNorth, testNorth);
 	}
 	
 	@After
