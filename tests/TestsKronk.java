@@ -10,17 +10,20 @@ import org.junit.Before;
 import org.junit.Test;
 
 import textGame.Kronk;
+import textGame.Movement.CommandLogic;
 
 public class TestsKronk {
 	
+	// Setup tests
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 	private final PrintStream originalOut = System.out;
 	private final PrintStream originalErr = System.err;
 	
 	// Test values
-	
 	private String printTest = "TestPrint!";
+	private int currentPos = 4;
+	private CommandLogic cmd = new CommandLogic(printTest, currentPos);
 	
 	@Before
 	public void setUp() {
@@ -38,6 +41,11 @@ public class TestsKronk {
 	public void testErrPrint() {
 	    Kronk.errPrint(printTest);
 	    assertEquals(printTest, errContent.toString().trim());
+	}
+	
+	@Test 
+	public void testDebugTP() {
+		//assertArrayEquals(cmd.getNewPosition(), 4);
 	}
 	
 	@After
