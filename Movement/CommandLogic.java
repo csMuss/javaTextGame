@@ -26,6 +26,7 @@ public class CommandLogic {
 	}
 
 	public CommandLogic checkCMD(String userInput, int currentPos) {
+		ThePlayer player = new ThePlayer();
 		switch (userInput.toLowerCase()) {
 		case "north":
 			// If current pos allows it...
@@ -57,6 +58,13 @@ public class CommandLogic {
 			return new CommandLogic("YOU HAVE DEFENDED...", currentPos);
 		case "tp":
 			return handleTp(currentPos);
+		case "pick up":
+			// Add to inventory of player
+			return new CommandLogic("YOU HAVE PICKED UP A(N): ", currentPos);
+		case "inventory":
+			// Print inventory
+			player.inventory.get(0);
+			return new CommandLogic("YOU HAVE PICKED UP A(N): ", currentPos);
 		default:
 			return new CommandLogic("UNKNOWN COMMAND", currentPos);
 		}

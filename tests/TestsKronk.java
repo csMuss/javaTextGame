@@ -57,7 +57,7 @@ public class TestsKronk {
 	}
 	
 	@Test 
-	public void testCMDLogic() {
+	public void testCMDNorth() {
 		CommandLogic testNorth = cmd.checkCMD(northInput, northTest + 1);
 		assertEquals(testNorth, testNorth);
 	}

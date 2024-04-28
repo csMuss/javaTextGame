@@ -25,7 +25,7 @@ public class Prompts {
 			"AFTER TRAVELING YOU REACH A SMALL OLD CASTLE, WITH BROKEN WINDOWS, MOSS, AND SEVERAL\n"
 			+ "SKELETONS AROUND, THEY EACH HAVE BROKEN SWORDS AROUND THEM AS IF A GREAT\n"
 			+ "BATTLE TOOK PLACE HERE, ATOP THE CASTLE, THERE IS SHIMMERING OBJECT IN THE UPPER MOST WINDOW\n";
-	
+	// Inside areas
 	private String insideCastle = 
 			"YOU FIND YOURSELF IN THE CASTLE AND LOOK AROUND TO FIND A STAIR CASE TO THE NORTH, "
 			+ "A GREAT HALL TO THE EAST AND A COURT YARD TO THE WEST...\n";
@@ -33,11 +33,14 @@ public class Prompts {
 	private String skeletonDescription = "A TALL LANKY SKELETON POSSESED BY SOME SORT OF MAGIC, \n"
 			+ "WITH A BROKEN IRON SWORD, SOME EVEN HAVE SWORDS, ARROWS, AND OTHER BATTLE DEBRIS STUCK\n"
 			+ "INSIDE OF THEM\n";
-	
+	// Encounters
 	private String firstSkeletonEnc = 
 			"AFTER GOING UP THE STAIRS YOU SPOT AN UNDEAD SKELETON, IT NOTICES YOU AND LUNGES\n"
 			+ "AT YOU WITH ITS BROKEN SWORD...";
-
+	
+	private String afterSkeletonEncOneDeath = 
+			"AFTER YOU HAVE KILLED THE SKELETON YOU NOTICE THAT ITS BROKEN SWORD IS ON THE GROUND\n";
+	
 	public String getIntroPrompt() {
 		return introPrompt;
 	}
@@ -62,8 +65,13 @@ public class Prompts {
 			return firstSkeletonEnc;
 		case 5: // Killing the skeleton 
 			SkeletonCastleEnc skeleton = new SkeletonCastleEnc();
-			skeleton.onDeath();
-			return insideCastle;
+			if(skeleton.getIsAlive() == false){
+				skeleton.onDeath();
+				return afterSkeletonEncOneDeath;
+			} else {
+				// Do damage to the player
+				return firstSkeletonEnc;
+			}
 		default:
 			return "UNKNOW POSITION, THE GAME IS BROKEN... YOU CAN EXIT OR RESET.\nDEBUG: " + currentPos;
 		}
