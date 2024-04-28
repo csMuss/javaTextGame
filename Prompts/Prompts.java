@@ -65,7 +65,7 @@ public class Prompts {
 			skeleton.onDeath();
 			return insideCastle;
 		default:
-			return "UNKNOW POSITION, THE GAME IS BROKEN... YOU CAN EXIT OR RESET";
+			return "UNKNOW POSITION, THE GAME IS BROKEN... YOU CAN EXIT OR RESET.\nDEBUG: " + currentPos;
 		}
 	}
 }

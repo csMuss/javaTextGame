@@ -44,6 +44,18 @@ public class Kronk {
 		System.out.println("" + d);
 	}
 	
+	public static void errPrint(String s) {
+		System.err.println(s);
+	}
+	
+	public static void errPrint(int d) {
+		System.err.println("" + d);
+	}
+	
+	public static void errpPrint(double d) {
+		System.err.println("" + d);
+	}
+	
 	public static boolean getGameState() {
 		return isRunning;
 	}
