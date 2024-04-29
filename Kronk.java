@@ -1,5 +1,6 @@
 package textGame;
 
+import textGame.Item.ItemManager;
 import textGame.Movement.CommandLogic;
 import textGame.Movement.UserInput;
 import textGame.Prompts.Prompts;
@@ -12,12 +13,13 @@ public class Kronk {
 	private static int currentPosition = 0;
 	private static boolean isRunning = true;
 	
+	public static ItemManager itmMan = new ItemManager();
+	
 	// java -jar kronk.jar
 	
 	public static void main(String[] args) {
 		print("Welcome to " + getGameName() + getVersion() + " ...");
 		print(Prompts.pmts.getCurrentPosPrompt(currentPosition));
-		
 		while(currentPosition < 10000) {
 			// Get input and pass currentPos
 			CommandLogic.cmd.checkCMD(UserInput.input.scannerInstance(), currentPosition);

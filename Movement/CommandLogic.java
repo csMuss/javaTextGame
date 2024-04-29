@@ -60,11 +60,10 @@ public class CommandLogic {
 			return handleTp(currentPos);
 		case "pick up":
 			// Add to inventory of player
-			return new CommandLogic("YOU HAVE PICKED UP A(N): ", currentPos);
-		case "inventory":
+			handleItemPickup(currentPos);
+		case "inv":
 			// Print inventory
-			player.inventory.get(0);
-			return new CommandLogic("YOU HAVE PICKED UP A(N): ", currentPos);
+			handleInventoryPrint(currentPos);
 		default:
 			return new CommandLogic("UNKNOWN COMMAND", currentPos);
 		}
@@ -97,6 +96,29 @@ public class CommandLogic {
 		// Gets the first charater from the array as a number
 		int newPos = Character.getNumericValue(tpPos.toCharArray()[0]);
 		return new CommandLogic("DEBUG: TELEPORT TO: " + newPos, newPos);
+	}
+	
+	/*	After an encounter you can pick up the item, if the encounter is successful
+	 * the currentPos = encounterPos + 1
+	 * */
+	private CommandLogic handleItemPickup(int currentPos) {
+		ThePlayer player = new ThePlayer();
+		switch(currentPos) {
+		case 5:
+			player.inventory.add(Kronk.itmMan.itemList.get(0));
+			return new CommandLogic("YOU HAVE PICKED UP A(N): " + player.inventory.get(0), currentPos);
+		default: 
+			return new CommandLogic("THERE IS NOTHING TO PICK UP...", currentPos);
+		}
+	}
+	
+	private CommandLogic handleInventoryPrint(int currentPos) {
+		ThePlayer player = new ThePlayer();
+		if(!player.inventory.isEmpty()) {
+			return new CommandLogic("YOU INSPECT YOUR ITMES...\n " + player.inventory.get(0), currentPos);
+		} else {
+			return new CommandLogic("YOUR INVENTORY IS EMPTY...", currentPos);
+		}
 	}
 	
 }

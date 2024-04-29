@@ -9,7 +9,4 @@ public class BrokenSwordItem extends Item {
 		super(15, 0, true, ItemClassification.WEAPON);
 		// TODO Auto-generated constructor stub
 	}
-	
-	// Add getters 
-	
 }

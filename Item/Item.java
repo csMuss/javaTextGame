@@ -14,7 +14,7 @@ public class Item {
 		this.doesDamage = doesDamage;
 		this.itemType = itemType;
 	}
-
+	
 	public int getDamage() {
 		return damage;
 	}
@@ -34,4 +34,5 @@ public class Item {
 	public ItemClassification getItemType() {
 		return itemType;
 	}
+	
 }
