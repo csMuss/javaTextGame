@@ -1,5 +1,6 @@
 package textGame;
 
+import textGame.Entity.ThePlayer;
 import textGame.Item.ItemManager;
 import textGame.Movement.CommandLogic;
 import textGame.Movement.UserInput;
@@ -14,6 +15,7 @@ public class Kronk {
 	private static boolean isRunning = true;
 	
 	public static ItemManager itmMan = new ItemManager();
+	public static ThePlayer player = new ThePlayer();
 	
 	// java -jar kronk.jar
 	
