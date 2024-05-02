@@ -1,6 +1,7 @@
 package textGame.Movement;
 
 import textGame.Kronk;
+import textGame.Item.ItemManager;
 import textGame.Movement.Encounters.EncounterTypes;
 import textGame.Movement.Encounters.EncOne.SkeletonCastleEnc;
 
@@ -101,7 +102,7 @@ public class CommandLogic {
 	private CommandLogic handleItemPickup(int currentPos) {
 		switch(currentPos) {
 		case 5:
-			Kronk.player.inventory.add(Kronk.itmMan.itemList.get(0));
+			Kronk.player.inventory.add(ItemManager.itemList.get(0));
 			return new CommandLogic("YOU HAVE PICKED UP A(N): " + Kronk.player.inventory.get(0), currentPos);
 		default: 
 			return new CommandLogic("THERE IS NOTHING TO PICK UP...", currentPos);
