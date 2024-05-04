@@ -59,10 +59,10 @@ public class CommandLogic {
 			return handleTp(currentPos);
 		case "pick up":
 			// Add to inventory of player
-			handleItemPickup(currentPos);
+			return handleItemPickup(currentPos);
 		case "inv":
 			// Print inventory
-			handleInventoryPrint(currentPos);
+			return handleInventoryPrint(currentPos);
 		default:
 			return new CommandLogic("UNKNOWN COMMAND", currentPos);
 		}
@@ -103,7 +103,7 @@ public class CommandLogic {
 		switch(currentPos) {
 		case 5:
 			Kronk.player.inventory.add(ItemManager.itemList.get(0));
-			return new CommandLogic("YOU HAVE PICKED UP A(N): " + Kronk.player.inventory.get(0), currentPos);
+			return new CommandLogic("YOU HAVE PICKED UP A(N): " + Kronk.player.inventory.get(0).getName(), currentPos);
 		default: 
 			return new CommandLogic("THERE IS NOTHING TO PICK UP...", currentPos);
 		}
@@ -111,7 +111,14 @@ public class CommandLogic {
 	
 	private CommandLogic handleInventoryPrint(int currentPos) {
 		if(!Kronk.player.inventory.isEmpty()) {
-			return new CommandLogic("YOU INSPECT YOUR ITMES...\n " + Kronk.player.inventory.get(0), currentPos);
+			// Int for getting the number of items in the inventory
+			int invSize = Kronk.player.inventory.size();
+			String inv = "";
+			for(int i = 0; i < invSize; i++) {
+				inv += Kronk.player.inventory.get(i).getName() + "\n";
+			}
+			
+			return new CommandLogic("YOU INSPECT YOUR ITMES...\n" + inv, currentPos);
 		} else {
 			return new CommandLogic("YOUR INVENTORY IS EMPTY...", currentPos);
 		}

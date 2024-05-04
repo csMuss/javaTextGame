@@ -8,7 +8,7 @@ import textGame.Prompts.Prompts;
 
 public class Kronk {
 	
-	private static double version = 0.1;
+	private static double version = 0.2;
 	private static String gameName = "Kronk ";
 	
 	private static int currentPosition = 0;
