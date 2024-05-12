@@ -1,7 +1,9 @@
 package textGame.Movement;
 
 import textGame.Kronk;
+import textGame.Entity.ThePlayer;
 import textGame.Item.ItemManager;
+import textGame.Item.Items.BrokenSwordItem;
 import textGame.Movement.Encounters.EncounterTypes;
 import textGame.Movement.Encounters.EncOne.SkeletonCastleEnc;
 
@@ -24,6 +26,13 @@ public class CommandLogic {
 	public int getNewPosition() {
 		return newPosition;
 	}
+	
+	/*
+	 * Checks a cmd command and if it is in the list, executes the command
+	 * else it will return an error.
+	 * 
+	 * Return a new command logic, and return new helper commands
+	 */
 
 	public CommandLogic checkCMD(String userInput, int currentPos) {
 		switch (userInput.toLowerCase()) {
@@ -102,20 +111,20 @@ public class CommandLogic {
 	private CommandLogic handleItemPickup(int currentPos) {
 		switch(currentPos) {
 		case 5:
-			Kronk.player.inventory.add(ItemManager.itemList.get(0));
-			return new CommandLogic("YOU HAVE PICKED UP A(N): " + Kronk.player.inventory.get(0).getName(), currentPos);
+			ThePlayer.inventory.add(ItemManager.getItemByName("BrokenSwordItem"));
+			return new CommandLogic("YOU HAVE PICKED UP A(N): " + ThePlayer.inventory.get(0), currentPos);
 		default: 
 			return new CommandLogic("THERE IS NOTHING TO PICK UP...", currentPos);
 		}
 	}
 	
 	private CommandLogic handleInventoryPrint(int currentPos) {
-		if(!Kronk.player.inventory.isEmpty()) {
+		if(!ThePlayer.inventory.isEmpty()) {
 			// Int for getting the number of items in the inventory
-			int invSize = Kronk.player.inventory.size();
+			int invSize = ThePlayer.inventory.size();
 			String inv = "";
 			for(int i = 0; i < invSize; i++) {
-				inv += Kronk.player.inventory.get(i).getName() + "\n";
+				inv += ThePlayer.inventory.get(i).getName() + "\n";
 			}
 			
 			return new CommandLogic("YOU INSPECT YOUR ITMES...\n" + inv, currentPos);
