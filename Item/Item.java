@@ -8,10 +8,11 @@ public class Item {
 	private boolean doesDamage;
 	private ItemClassification itemType;
 	
-	public Item(int damage, int healing, boolean doesDamage, ItemClassification itemType) {
+	public Item(int damage, int healing, String name, boolean doesDamage, ItemClassification itemType) {
 		this.damage = damage;
 		this.healing = healing;
 		this.doesDamage = doesDamage;
+		this.name = name;
 		this.itemType = itemType;
 	}
 	
