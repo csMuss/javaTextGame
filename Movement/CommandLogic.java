@@ -2,6 +2,7 @@ package textGame.Movement;
 
 import textGame.Kronk;
 import textGame.Entity.ThePlayer;
+import textGame.Item.Item;
 import textGame.Item.ItemManager;
 import textGame.Item.Items.BrokenSwordItem;
 import textGame.Movement.Encounters.EncounterTypes;
@@ -110,21 +111,28 @@ public class CommandLogic {
 	 * */
 	private CommandLogic handleItemPickup(int currentPos) {
 		switch(currentPos) {
-		case 5:
-			ThePlayer.inventory.add(ItemManager.getItemByName("BrokenSwordItem"));
-			return new CommandLogic("YOU HAVE PICKED UP A(N): " + ThePlayer.inventory.get(0), currentPos);
+		case 5: // broken sword pos
+			ThePlayer.getItems().add(new BrokenSwordItem());
+			return new CommandLogic("YOU HAVE PICKED UP A(N): " + ThePlayer.getItems().get(0).getName(), currentPos);
 		default: 
 			return new CommandLogic("THERE IS NOTHING TO PICK UP...", currentPos);
 		}
 	}
 	
+	/* Prints the inventory of the player else returns an inventory empty
+	 * */
 	private CommandLogic handleInventoryPrint(int currentPos) {
-		if(!ThePlayer.inventory.isEmpty()) {
+		if(!ThePlayer.getItems().isEmpty()) {
 			// Int for getting the number of items in the inventory
-			int invSize = ThePlayer.inventory.size();
+			int invSize = ThePlayer.getItems().size();
 			String inv = "";
 			for(int i = 0; i < invSize; i++) {
-				inv += ThePlayer.inventory.get(i).getName() + "\n";
+				inv += ThePlayer.getItems().get(i).getName();
+				// If i is not the last item, add the \n
+				if(invSize - i != 1) {
+					inv += "\n";
+				}
+				
 			}
 			
 			return new CommandLogic("YOU INSPECT YOUR ITMES...\n" + inv, currentPos);

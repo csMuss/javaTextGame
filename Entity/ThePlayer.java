@@ -8,7 +8,7 @@ public class ThePlayer extends Entity {
 	
 	private int damage = 15;
 	// The players inventory
-	public static ArrayList<Item> inventory = new ArrayList<Item>();
+	private static ArrayList<Item> inventory = new ArrayList<Item>();
 
 	public ThePlayer() {
 		super(0, 100, "Player", "The Player", EntityClassification.PLAYER);
