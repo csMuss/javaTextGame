@@ -36,7 +36,7 @@ public class CommandLogic {
 	 */
 
 	public CommandLogic checkCMD(String userInput, int currentPos) {
-		switch (userInput.toLowerCase()) {
+		switch (userInput.toLowerCase().trim()) {
 		case "north":
 			// If current pos allows it...
 			return new CommandLogic("MOVING FORWARD", currentPos + 1);
@@ -137,22 +137,22 @@ public class CommandLogic {
 				
 			}
 			
-			// After we parse the string and count the number of occurrences
-			String splitUp[] = inv.split("\n");
-			// Make count occurrences an array for the different items, 0 being the first item
-			// 1 being the second n being the last...
-			int countOccurrences = 0;
-			// Do the same here as with count occurrences
-			String item = "Broken Sword";
-			for(int i = 0; i < splitUp.length; i++) {
-				if(item.equals(splitUp[i])) {
-					countOccurrences++;
-				}
-			}
-			
-			// This will need to be re-worked, this is a simple solution, or we can just repeat it for all items
-			// "Broken Sword" + "x (" + countOccurrences + ")\n"
-			inv = inv.replaceAll("Broken Sword", "");
+//			// After we parse the string and count the number of occurrences
+//			String splitUp[] = inv.split("\n");
+//			// Make count occurrences an array for the different items, 0 being the first item
+//			// 1 being the second n being the last...
+//			int countOccurrences = 0;
+//			// Do the same here as with count occurrences
+//			String item = "Broken Sword";
+//			for(int i = 0; i < splitUp.length; i++) {
+//				if(item.equals(splitUp[i])) {
+//					countOccurrences++;
+//				}
+//			}
+//			
+//			// This will need to be re-worked, this is a simple solution, or we can just repeat it for all items
+//			// "Broken Sword" + "x (" + countOccurrences + ")\n"
+//			inv = inv.replaceAll("Broken Sword", "");
 			
 			return new CommandLogic("YOU INSPECT YOUR ITMES...\n" + inv, currentPos);
 		} else {
