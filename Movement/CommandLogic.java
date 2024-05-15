@@ -39,6 +39,7 @@ public class CommandLogic {
 		switch (userInput.toLowerCase().trim()) {
 		case "north":
 			// If current pos allows it...
+			// If currentPos = 6 we are at a break and we need to let the player know
 			return new CommandLogic("MOVING FORWARD", currentPos + 1);
 		case "west":
 			// If current pos allows it...
@@ -113,7 +114,7 @@ public class CommandLogic {
 		switch(currentPos) {
 		case 5: // broken sword pos
 			ThePlayer.getItems().add(new BrokenSwordItem());
-			return new CommandLogic("YOU HAVE PICKED UP A(N): " + ThePlayer.getItems().get(0).getName(), currentPos);
+			return new CommandLogic("YOU HAVE PICKED UP A(N): " + ThePlayer.getItems().get(0).getName(), currentPos + 1);
 		default: 
 			return new CommandLogic("THERE IS NOTHING TO PICK UP...", currentPos);
 		}

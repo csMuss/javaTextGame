@@ -39,7 +39,8 @@ public class Prompts {
 			+ "AT YOU WITH ITS BROKEN SWORD...";
 	
 	private String afterSkeletonEncOneDeath = 
-			"AFTER YOU HAVE KILLED THE SKELETON YOU NOTICE THAT ITS BROKEN SWORD IS ON THE GROUND\n";
+			"AFTER YOU HAVE KILLED THE SKELETON YOU NOTICE THAT ITS BROKEN SWORD IS ON THE GROUND\n"
+			+ "THE ONLY WAY FORWARD IS NORTH BACK DOWN THE STAIRS...";
 	
 	public String getIntroPrompt() {
 		return introPrompt;
@@ -72,6 +73,9 @@ public class Prompts {
 				// Do damage to the player
 				return firstSkeletonEnc;
 			}
+		case 6: //  back at the enterance after pick up
+				// Or player does not pick up and just goes north
+			return insideCastle;
 		default:
 			return "UNKNOW POSITION, THE GAME IS BROKEN... YOU CAN EXIT OR RESET.\nDEBUG: " + currentPos;
 		}
